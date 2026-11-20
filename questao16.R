@@ -4,16 +4,6 @@
 #   - selecionar (de forma justificada) um modelo SARIMA(p,d,q)(P,D,Q)12 e ajusta-lo
 #   - gerar 100 series de 76 anos
 #   - comparar MEDIAS MENSAIS e DESVIOS PADRAO MENSAIS gerados x observados
-# Baseado em: Aulas-11/03-ARMA-ARIMA.pdf (SARIMA: S = 12 para dados mensais;
-#               "opcao de remover o elemento sazonal e usar o ARIMA padrao")
-#             Aulas-11/04-autoarima.R (auto.arima, checkresiduals, kpss, shapiro)
-#             Aulas-11/03-Selecao...R (AIC, BIC) ; semente: Aulas/09/ProcEstocasticos.r
-# ESTRUTURA:  PARTE 1 = SARIMA (o que o enunciado pede)
-#             PARTE 2 = alternativa do proprio slide: tirar a sazonalidade (padronizar
-#                       cada mes) e usar ARMA comum  (EXTRA, para comparar)
-# COMO USAR: rode o script (Source). Vai abrir uma janelinha: clique no arquivo MENSAL
-#   (Qmes.csv). Nao precisa mexer em pasta nenhuma.
-# ATENCAO: o script leva alguns minutos (a grade de modelos SARIMA e demorada).
 # =====================================================================
 library(tseries)
 library(forecast)
@@ -217,12 +207,3 @@ saida2 <- sapply(ger2, function(g) as.vector(t(g)))
 colnames(saida1) <- colnames(saida2) <- paste0("S", 1:nser)
 write.table(saida1, "series_geradas_Q16_SARIMA.csv", sep = ";", dec = ".", row.names = FALSE)
 write.table(saida2, "series_geradas_Q16_ARMA_padronizado.csv", sep = ";", dec = ".", row.names = FALSE)
-
-# FRASE TECNICA: a serie mensal (912 valores) tem forte sazonalidade (picos da FAC nos
-# lags 12, 24, ...) e pede d = 0 e D = 1 (diferenca sazonal). Na grade, o menor AICc escolhe
-# o SARIMA(2,0,2)(0,1,1)12 (o BIC escolhe o (1,0,1)(0,1,1)12), com residuos descorrelacionados
-# (Ljung-Box p = 0,92) mas nao normais. Porem, as 100 series geradas reproduzem mal as
-# estatisticas mensais: erro medio de 35% nas medias e de 111% nos desvios (todos os meses
-# ficam com desvio ~40 m3/s, pois o modelo tem uma unica variancia de inovacao, e as 100
-# series tem vazoes negativas). A alternativa do proprio slide (padronizar cada mes e usar um
-# ARMA(3,1) no ln da vazao) reproduz medias (erro 0,5%) e desvios (3,5%) sem vazoes negativas.
