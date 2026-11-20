@@ -2,16 +2,6 @@
 # 3o TRABALHO PRATICO - HIDROLOGIA ESTOCASTICA (EHR806)
 # QUESTAO 15 - Repetir os itens a) e b) da Questao 14 com a serie
 #              transformada  Y = ln(QAH)   (logaritmo natural da vazao anual)
-#              (o enunciado indica: ver Salas (1980), pagina 70)
-# Salas (1980), p. 70, secao 3.2.1 (Normalizacao de series anuais): varias series
-#   anuais de vazao se ajustam bem a uma lognormal de 2 parametros; entao
-#   y = log(x) tem distribuicao normal (media mu_y e desvio sigma_y). (So li a p. 70.)
-# Baseado em: Aulas-11/03-Selecao de Modelos via Criterio de Informacao.R
-#             Aulas-11/04-autoarima.R e 02-ARMA.R ; semente: Aulas/09/ProcEstocasticos.r
-# Por que o logaritmo? A vazao e assimetrica (muitos anos "normais" e poucos
-# muito cheios) e o AR(1) gaussiano e simetrico. O ln "simetriza" a serie.
-# COMO USAR: rode o script (Source). Vao abrir 2 janelinhas: clique no arquivo ANUAL
-#   (Qanual.csv) e depois no MENSAL (Qmes.csv). Nao precisa mexer em pasta nenhuma.
 # =====================================================================
 library(tseries)
 library(forecast)
@@ -203,10 +193,3 @@ par(mfrow = c(1, 1))
 colnames(Qger) <- paste0("S", 1:nser)
 write.table(data.frame(ANO = ano, Qger), "series_geradas_Q15.csv",
             sep = ";", dec = ".", row.names = FALSE)
-
-# FRASE TECNICA: a transformacao Y = ln(Q) reduz a assimetria (0,70 -> 0,04) e torna a
-# serie compativel com a normal (Shapiro p = 0,94 contra 0,025 da serie original). Entre
-# AR(p) e ARMA(p,q), AIC, BIC e auto.arima escolhem o AR(1) para Y (alfa1 = 0,34), com
-# residuos ruido branco (Ljung-Box p = 0,58) e normais (Shapiro p = 0,52). As 100 series
-# geradas em Y e levadas de volta por exp() reproduzem media, desvio, assimetria e
-# limites da serie observada e nao produzem vazoes negativas.
