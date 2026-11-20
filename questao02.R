@@ -3,14 +3,6 @@
 # Considere o modelo MA(1):  Xt = Zt - 0,9*Z(t-1)
 #   a) O modelo e estacionario?
 #   b) O modelo e inversivel?
-#
-# BASEADO NAS AULAS DO PROFESSOR:
-#   Aulas-11/01-MA.R e Aulas/10/00-MA.R : gerar MA(1) com o 'for', kpss.test,
-#       acf, pacf e arima.sim  (formato dele: Xt = Zt + beta1*Z(t-1), aqui beta1 = -0,9)
-#   Slides "Processos de Media Movel" (Aulas/10):
-#       - "O processo de media movel e estacionario para qualquer valor de beta"
-#       - rho(1) = beta1 / (1 + beta1^2)
-#       - "condicao de inversibilidade": raizes de theta(B) = 0 FORA do circulo unitario
 # ==========================================================================
 
 library(tseries)      # traz o kpss.test (o mesmo teste usado pelo professor)
@@ -99,6 +91,3 @@ data.frame(
                "raiz de 1 - 0,9B = 0 e 1,11 > 1 (fora do circulo unitario), equivale a |0,9| < 1")
 )
 
-# FRASE TECNICA: todo processo MA e estacionario; ele e inversivel quando as raizes
-# de theta(B) = 0 estao fora do circulo unitario (no MA(1), |beta1| < 1), o que
-# garante um unico modelo para cada ACF.
