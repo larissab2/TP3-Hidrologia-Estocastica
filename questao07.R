@@ -2,10 +2,6 @@
 # 3o TRABALHO PRATICO - HIDROLOGIA ESTOCASTICA (EHR806)
 # QUESTAO 7 - ACF teorica: (a) AR(1) com alfa = 0,1; -0,75; 0,99
 #                          (b) Medias moveis de ordem q
-# Baseado em: Aulas/10/01-Processos Autoregressivos.pdf  (rho(k) = alfa^k)
-#             Aulas/10/00-Processos de Media Movel.pdf   (rho(k) corta no lag q)
-#             Aulas/10/01-AR.R e 00-MA.R (estilo dos scripts)
-# Aqui NAO se simula nada: a ACF TEORICA e uma formula, entao so calculamos.
 # =====================================================================
 graphics.off()          # fecha graficos antigos (evita Plots vazio no RStudio)
 lag.max <- 20           # vamos olhar do lag 0 ate o lag 20
@@ -52,8 +48,3 @@ plot(k, rho.ma, type = "h", lwd = 3, ylim = c(-1, 1),
      xlab = "lag k", ylab = expression(rho(k)),
      main = "MA(2): a ACF corta no lag q = 2")
 abline(h = 0)
-
-# FRASE TECNICA: a ACF teorica do AR(1) estacionario e rho(k) = alfa^k, isto e,
-# decai exponencialmente (monotonica se alfa > 0, alternando de sinal se alfa < 0,
-# e muito lenta se |alfa| proximo de 1); a do MA(q) e nao nula ate o lag q e
-# identicamente nula para k > q (corta no lag q).
