@@ -3,15 +3,6 @@
 # Considere o modelo AR(1):  Xt = 0,8*X(t-1) + Zt
 #   a) O modelo e estacionario?
 #   b) O modelo e inversivel?
-#
-# BASEADO NAS AULAS DO PROFESSOR:
-#   Aulas/10/01-AR.R e Aulas-11/00-AR.R : gerar AR(1) com o 'for', kpss.test,
-#       ACF teorica (rho(k) = alfa^k), acf empirica, pacf e arima.sim
-#   Slides "Processos Autoregressivos" (Aulas/10):
-#       - o AR(1) e estacionario se |alfa| < 1  (equivale a raiz de 1 - alfa*B = 0 fora do circulo)
-#       - variancia: sigma_X^2 = sigma_Z^2 / (1 - alfa^2)
-#       - rho(k) = alfa^k
-#   Slides da Aula 11 (ARMA-ARIMA): a invertibilidade e uma condicao da parte MA, theta(B)
 # ==========================================================================
 
 library(tseries)      # traz o kpss.test (o mesmo teste usado pelo professor)
@@ -91,6 +82,3 @@ data.frame(
   motivo   = c("raiz de 1 - 0,8B = 0 e 1,25 > 1 (fora do circulo), equivale a |0,8| < 1",
                "todo AR e inversivel: Zt = Xt - 0,8*X(t-1), expressao finita (theta(B) = 1)")
 )
-
-# FRASE TECNICA: o AR(1) e estacionario quando |alfa| < 1 (raiz de 1 - alfa*B fora do
-# circulo unitario) e a sua ACF decai como alfa^k; todo AR e inversivel por construcao.
