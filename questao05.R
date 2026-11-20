@@ -2,12 +2,6 @@
 # 3o TRABALHO PRATICO - QUESTAO 5
 # AR(1): X(t) = alfa*X(t-1) + Z(t), escrito como MA infinito. Mostrar que
 #   E[X(t)] = 0   e   Var[X(t)] = sigma^2 * (1 + alfa^2 + alfa^4 + ...) = sigma^2/(1 - alfa^2)
-#
-# Baseado nos slides do professor "Processos Autoregressivos" (Aulas/10):
-#   substituicoes sucessivas -> X(t) = soma de alfa^(j-1) * Z(t-j+1), j = 1, 2, ...
-#   e na forma com o operador B: X(t) = (1 + alfa*B + alfa^2*B^2 + ...) Z(t)
-# Estilo do script do professor (Aulas/10/01-AR.R): for(i in ...) para gerar o
-# AR e arima.sim. Aqui o script CONFERE numericamente a conta feita a mao.
 # ==========================================================================
 
 graphics.off()        # fecha graficos antigos que possam estar abertos
@@ -64,7 +58,3 @@ var(ar1)
 # --------------------------------------------------------------------------
 sum(1.0^(2 * (0:500)))     # alfa = 1: soma = 501 e continua crescendo
 sum(1.1^(2 * (0:100)))     # alfa = 1,1: explode
-
-# FRASE TECNICA: todo AR(1) estacionario (|alfa| < 1) e um MA infinito com
-# pesos alfa^j; a variancia e a serie geometrica sigma^2/(1 - alfa^2), que
-# so converge porque |alfa| < 1.
