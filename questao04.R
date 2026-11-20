@@ -3,11 +3,6 @@
 # Modelo: X(t) = 0,1*X(t-1) + 0,9*X(t-2) + Z(t)
 #   a) Verificar as condicoes de estacionariedade
 #   b) Se nao for estacionario, como torna-lo estacionario?
-#
-# Adaptado dos scripts do professor:
-#   Aulas/10/01-AR.R  e  Aulas-11/00-AR.R
-#   (mesmo estilo: for(i in ...) para gerar o AR, kpss.test, acf, pacf,
-#    arima.sim com par(mfrow=c(1,3)) e plot.ts)
 # ==========================================================================
 
 library(tseries)      # traz o kpss.test e o adf.test (usados pelo professor)
@@ -87,6 +82,3 @@ acf(xt, main = "ACF de X(t)")
 acf(yt, main = "ACF de Y(t)")
 par(mfrow = c(1, 1))
 
-# FRASE TECNICA: uma raiz unitaria (raiz sobre o circulo, |B| = 1) torna o
-# processo nao estacionario; uma diferenciacao (d = 1) a elimina e leva ao
-# ARIMA(p,1,q).
