@@ -2,11 +2,6 @@
 # 3o TRABALHO PRATICO - HIDROLOGIA ESTOCASTICA (EHR806)
 # QUESTAO 8 - AR(2) estacionario: Xt = a1 Xt-1 + a2 Xt-2 + Zt
 #             Sabendo a1 = 0,7 e rho2 = 0,6, da para achar a2?
-# Baseado em: Aulas/10/01-Processos Autoregressivos.pdf (AR(2)) e
-#             Aulas/10/01-AR.R (ACF teorica com for + plot type="h"):
-#     rho1 = a1/(1 - a2)
-#     rho2 = a1*rho1 + a2 = a1^2/(1 - a2) + a2
-# Aqui nao ha simulacao: e uma equacao com UMA incognita (a2).
 # =====================================================================
 graphics.off()
 alfa1 <- 0.7
@@ -54,7 +49,3 @@ abline(h = 0)
 # Raizes do polinomio 1 - a1 B - a2 B^2: devem ter modulo > 1 (estacionario).
 # (polyroot nao aparece nos scripts do professor; e so uma checagem extra)
 print(round(Mod(polyroot(c(1, -alfa1, -a2.ok))), 4))
-
-# FRASE TECNICA: sim, alfa2 e deduzivel: as equacoes de Yule-Walker do AR(2)
-# levam a uma equacao do 2o grau em alfa2; das duas raizes apenas a que satisfaz
-# a regiao de estacionariedade (alfa1+alfa2<1, alfa2-alfa1<1, |alfa2|<1) e valida.
