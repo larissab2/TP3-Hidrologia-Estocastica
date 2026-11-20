@@ -1,9 +1,6 @@
 # =====================================================================
 # 3o TRABALHO PRATICO - HIDROLOGIA ESTOCASTICA (EHR806)
 # QUESTAO 9 - Determinar a ACF de  Xt = 14 + Zt + 0,4 Zt-1 - 0,2 Zt-2
-# Baseado em: Aulas/10/00-Processos de Media Movel.pdf
-#     (rho(k) do MA(q); somar uma constante mu NAO muda a ACF)
-#             Aulas/10/00-MA.R (serie gerada com for + acf)
 # =====================================================================
 library(tseries)
 graphics.off()
@@ -54,7 +51,3 @@ par(mfrow = c(1, 2))
 plot(xt[1:200], type = "l", col = "red", main = "Serie simulada (200 primeiros)")
 acf(xt, type = "correlation", lag.max = 20, main = "ACF da serie simulada")
 par(mfrow = c(1, 1))
-
-# FRASE TECNICA: a constante 14 apenas desloca a media (E[Xt] = 14) e nao afeta
-# a ACF; o processo e um MA(2) com rho(1) = 0,32/1,2 = 0,267, rho(2) = -0,2/1,2 = -0,167
-# e rho(k) = 0 para k > 2 (a ACF corta no lag q = 2).
