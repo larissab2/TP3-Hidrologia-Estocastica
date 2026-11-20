@@ -4,15 +4,6 @@
 #   (a) Xt = Zt - Z(t-1)
 #   (b) Xt = X(t-1) + Zt
 #   (c) Xt - X(t-1) + 0,5*X(t-2) = Zt
-#
-# BASEADO NAS AULAS DO PROFESSOR:
-#   (a) Aulas-11/01-MA.R e Aulas/10/00-MA.R : gerar MA(1) com o 'for', kpss.test,
-#       acf e pacf   (no formato dele: Xt = Zt + beta1*Z(t-1), aqui beta1 = -1)
-#   (b) Aulas/09/ProcEstocasticos.r (PASSEIO ALEATORIO) e slides da Aula 09:
-#       Var(Xt) = t*sigma^2, acf e primeira diferenca (diff)
-#   (c) Aulas/10/01-AR.R e Aulas-11/00-AR.R : AR(2) com 'for', kpss.test, acf, pacf,
-#       arima.sim; slides "Processos Autoregressivos": raizes fora do circulo
-#       unitario e as condicoes do triangulo
 # ==========================================================================
 
 library(tseries)      # traz o kpss.test (o mesmo teste usado pelo professor)
@@ -138,8 +129,3 @@ data.frame(
                     "Var(Xt) = t*sigma^2 cresce com t (raiz unitaria)",
                     "raizes 1+-1i com modulo 1,414 > 1 (fora do circulo)")
 )
-
-# FRASE TECNICA: um processo e estacionario quando media, variancia e
-# autocovariancia nao dependem do tempo; todo MA finito e estacionario, o AR
-# exige raizes fora do circulo unitario, e o passeio aleatorio (raiz unitaria)
-# nao e, mas sua primeira diferenca e.
