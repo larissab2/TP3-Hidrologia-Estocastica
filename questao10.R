@@ -1,13 +1,6 @@
 # =====================================================================
 # 3o TRABALHO PRATICO - HIDROLOGIA ESTOCASTICA (EHR806)
 # QUESTAO 10 - Esbocar a ACF de  Xt = -0,5 Xt-1 + Zt - 0,8 Zt-1   (ARMA(1,1))
-# Baseado em: Aulas-11/03-ARMA-ARIMA.pdf (tabela: ARMA(1,1) com alfa1 < 0 ->
-#             ACF com decrescimento OSCILATORIO apos o lag 1)
-#             Aulas-11/02-ARMA.R (serie gerada com for, acf, pacf, arima.sim)
-#             Aulas/10/01-AR.R   (ACF teorica com for + plot type="h")
-# ATENCAO: a formula numerica do rho(1) do ARMA(1,1) NAO esta nos slides
-# (la so tem o comportamento). Ela e a formula classica de Box & Jenkins,
-# e eu a confiro com a simulacao e com a funcao ARMAacf do R.
 # =====================================================================
 library(tseries)
 graphics.off()
@@ -57,8 +50,3 @@ cat("ACF simulada lags 1 a 5:", round(a$acf[2:6], 3), "\n")
 
 # --- 4) CONFERENCIA 2: funcao do R (extra, nao e do professor) ----------
 print(round(ARMAacf(ar = alfa1, ma = beta1, lag.max = 5), 4))
-
-# FRASE TECNICA: o processo e um ARMA(1,1) estacionario (|alfa1|<1) e inversivel
-# (|beta1|<1); sua ACF teorica tem rho(1) = -0,746 e, para k >= 2, rho(k) =
-# alfa1*rho(k-1), isto e, decai exponencialmente alternando de sinal
-# (decrescimento oscilatorio apos o lag 1, pois alfa1 < 0).
