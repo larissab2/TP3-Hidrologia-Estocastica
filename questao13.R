@@ -2,10 +2,6 @@
 # 3o TRABALHO PRATICO - HIDROLOGIA ESTOCASTICA (EHR806)
 # QUESTAO 13 - n = 200. Dadas a FAC e a FACP estimadas, identificar um
 #              possivel modelo gerador dos dados.
-# Baseado em: Aulas-11/03-ARMA-ARIMA.pdf (tabela de identificacao ACF x PACF:
-#             AR(p), MA(q), ARMA(p,q); "ordem do AR = numero de PACF
-#             significativas"; "MA = maior lag significativo da ACF")
-#             Aulas-11/02-ARMA.R (arima.sim + plot.ts + acf + pacf)
 # =====================================================================
 library(tseries)
 graphics.off()
@@ -78,8 +74,3 @@ cat("FACP recalculada a partir da FAC:", round(pac, 3), "\n")
 cat("FACP da tabela                  :", phi, "\n")
 cat("-> nao batem (e passam de 1 nos lags finais): os dados do enunciado sao\n")
 cat("   aproximados/inconsistentes; a identificacao e feita pelo PADRAO.\n")
-
-# FRASE TECNICA: a FAC decai exponencialmente alternando de sinal (rho(k) ~ -0,8
-# rho(k-1)) e a FACP tambem decai (nao ha corte nitido); pela tabela de
-# identificacao de Box-Jenkins (ambas decaem) o modelo candidato e um ARMA(1,1)
-# com alfa1 ~ -0,8 (alfa1 < 0 explica a alternancia de sinal).
