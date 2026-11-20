@@ -1,12 +1,6 @@
 # =====================================================================
 # 3o TRABALHO PRATICO - HIDROLOGIA ESTOCASTICA (EHR806)
 # QUESTAO 11 - AR(2) com phi11 = 0,9 e rho2 = 0,8. Determinar phi22.
-# Baseado em: Aulas/10/01-Processos Autoregressivos.pdf
-#   (secao AUTOCORRELACOES PARCIAIS):  phi11 = rho1
-#   phi12 = rho1*(1 - rho2)/(1 - rho1^2)
-#   phi22 = (rho2 - rho1^2)/(1 - rho1^2)
-#   e a forma matricial  P * Phi = rho  ->  Phi = inversa(P) * rho
-# Nao ha simulacao: e so conta.
 # =====================================================================
 graphics.off()
 
@@ -43,8 +37,3 @@ print(round(ARMAacf(ar = c(phi12, phi22), lag.max = 3, pacf = TRUE), 4))
 # O AR(2) e estacionario? (triangulo dos slides)
 cat("a1+a2<1:", phi12 + phi22 < 1, "| a2-a1<1:", phi22 - phi12 < 1,
     "| |a2|<1:", abs(phi22) < 1, "\n")
-
-# FRASE TECNICA: pelas equacoes de Yule-Walker do AR(2), phi22 = (rho2 - rho1^2)/
-# (1 - rho1^2) = (0,8 - 0,81)/(1 - 0,81) = -0,0526; como phi11 = rho1 = 0,9,
-# phi22 e aproximadamente zero: o excesso de correlacao no lag 2 que o AR(1) nao
-# explica e desprezivel (e, no AR(2), phi22 = alfa2).
