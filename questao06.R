@@ -6,16 +6,6 @@
 #   c) Simular no R uma serie de 1000 valores para Xt e, a partir dela,
 #      produzir uma serie de 998 valores de Yt.
 #   d) Plotar o correlograma de Yt e comentar o resultado.
-#
-# BASEADO NAS AULAS DO PROFESSOR:
-#   Aulas/10/01-AR.R e Aulas-11/00-AR.R : gerar o AR(2) com o 'for' (xt <- 1:2 ...),
-#       kpss.test, acf, pacf, arima.sim
-#   Slides "Processos Autoregressivos": raizes de Phi(B) = 0 fora do circulo unitario
-#       e as condicoes do triangulo do AR(2)
-#   Slides Aulas-11 (ARMA-ARIMA, "Modelos Nao Estacionarios"):
-#       Wt = (1 - B)^d Xt ; "se a serie e nao estacionaria o decaimento do correlograma
-#       e muito lento" ; d = 1 e o valor mais usado
-#   Aulas/09/ProcEstocasticos.r : diff() e acf() (passeio aleatorio)
 # ==========================================================================
 
 library(tseries)      # traz o kpss.test e o adf.test (testes de estacionariedade)
@@ -120,7 +110,3 @@ data.frame(
              "Yt = 0,5*Y(t-1) + Zt: raiz B = 2 > 1",
              "rho(k) = 0,5^k: 0,5; 0,25; 0,125...; PACF corta no lag 1")
 )
-
-# FRASE TECNICA: uma raiz unitaria (|B| = 1) torna a serie nao estacionaria e faz o
-# correlograma decair muito devagar; uma diferenciacao (d = 1) elimina essa raiz e o
-# Xt vira um ARIMA(p,1,q), cuja diferenca e um ARMA estacionario.
