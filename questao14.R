@@ -4,13 +4,6 @@
 #   a) Estatisticas descritivas e graficos da serie anual e das medias mensais
 #   b) Selecionar (de forma justificada) entre AR(p) e ARMA(p,q), ajustar na serie
 #      anual e gerar 100 series sinteticas de 76 anos
-# Baseado em: Aulas-11/03-Selecao de Modelos via Criterio de Informacao.R
-#               (AIC = n*log(sigma2) + 2k ; BIC = n*log(sigma2) + log(n)*k)
-#             Aulas-11/04-autoarima.R   (auto.arima, checkresiduals, kpss, shapiro)
-#             Aulas-11/02-ARMA.R        (arima.sim + acf + pacf)
-#             Aulas/09/ProcEstocasticos.r (semente do professor)
-# COMO USAR: rode o script (Source). Vao abrir 2 janelinhas: clique no arquivo ANUAL
-#   (Qanual.csv) e depois no MENSAL (Qmes.csv). Nao precisa mexer em pasta nenhuma.
 # =====================================================================
 library(tseries)
 library(forecast)
@@ -195,12 +188,3 @@ par(mfrow = c(1, 1))
 colnames(Qger) <- paste0("S", 1:nser)
 write.table(data.frame(ANO = ano, Qger), "series_geradas_Q14.csv",
             sep = ";", dec = ".", row.names = FALSE)
-
-# FRASE TECNICA: a serie anual (n = 76) e estacionaria (KPSS nao rejeita) e fracamente
-# autocorrelacionada (r1 = 0,27); entre AR(p) e ARMA(p,q), os criterios AIC, BIC e AICc
-# (e o auto.arima) escolhem o AR(1), x_t = 0,276 x_(t-1) + z_t, com residuos
-# descorrelacionados (Ljung-Box p = 0,59). Os residuos, porem, nao sao normais (Shapiro
-# p = 0,003) porque a serie e assimetrica (g = 0,70): as 100 series geradas (media +
-# AR(1) gaussiano) reproduzem media, desvio padrao e autocorrelacao, mas saem simetricas
-# (g ~ 0) e 2 delas chegam a ter vazoes negativas. Isso motiva a transformacao
-# logaritmica da Questao 15.
