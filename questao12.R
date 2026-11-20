@@ -2,11 +2,6 @@
 # 3o TRABALHO PRATICO - HIDROLOGIA ESTOCASTICA (EHR806)
 # QUESTAO 12 - n = 100; rho1=0,75, rho2=0,09, rho3=0,04, rho4=0,02, rho5=0,015
 #   a) Calcular phi11, phi22, phi33 pelas equacoes de Yule-Walker
-# Baseado em: Aulas/10/01-Processos Autoregressivos.pdf (AUTOCORRELACOES PARCIAIS)
-#   eq. 05: Phi_k = inversa(P_k) %*% rho_k      (forma matricial)
-#   eqs. 06-09: relacoes recursivas de Durbin (1960)
-# NOTA: o enunciado traz "rho2 = 0,0,09"; o Prof. Eber confirmou por e-mail
-#       que o valor correto e 0,09 (usado abaixo).
 # =====================================================================
 graphics.off()
 n   <- 100
@@ -52,9 +47,3 @@ cat("Determinante da matriz de autocorrelacoes (deveria ser > 0):", round(det(P3
 
 # Faixa de confianca 95% usada no R (acf/pacf): +- 1,96/sqrt(n)
 cat("Faixa +-", round(1.96/sqrt(n), 3), "\n")
-
-# FRASE TECNICA: pelas equacoes de Yule-Walker, phi11 = 0,75, phi22 = -1,08 e
-# phi33 = -9,75. Como |phi_kk| > 1 e impossivel para uma autocorrelacao parcial
-# (a matriz de autocorrelacoes nao e positiva definida: rho2 deveria ser >= 0,125),
-# os valores amostrais do enunciado (rho2 = 0,09 confirmado pelo professor) nao sao
-# compativeis entre si.
